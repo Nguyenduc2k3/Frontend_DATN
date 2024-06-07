@@ -18,10 +18,6 @@ export default function Header({ products }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const handleSexChange = (sex) => {
-        dispatch(setSexCategory(sex));
-        navigate(`/${sex}`);
-    };
 
     const [allProducts, setAllProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -31,7 +27,7 @@ export default function Header({ products }) {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/products');
+                const response = await axios.get('http://127.0.0.1:8000/api/product');
                 setAllProducts(response.data);
             } catch (error) {
                 console.error("Failed to fetch products", error);
@@ -64,7 +60,7 @@ export default function Header({ products }) {
 
     useEffect(() => {
         const filtered = allProducts.filter((product) =>
-            product.title.toLowerCase().includes(searchQuery.toLowerCase())
+            product.nameProduct.toLowerCase().includes(searchQuery.toLowerCase())
         );
         setFilteredProducts(filtered);
     }, [searchQuery]);
@@ -90,19 +86,20 @@ export default function Header({ products }) {
                         <div className="w-full mx-auto h-96 bg-white top-16 absolute left-0 z-999 overflow-y-scroll shadow-2xl scrollbar-hide cursor-pointer">
                             {filteredProducts.map((product) => (
                                 <div
-                                    key={product.id}
-                                    className="max-w-[600px] h-28 bg-gray-100 mb-3 flex items-center gap-3"
-                                    onClick={() => {
-                                        navigate(`/product/${product.title.toLowerCase().split(" ").join("")}`, {
-                                            state: { product: product },
-                                        });
-                                        setShowSearchBar(true);
-                                        setSearchQuery("");
-                                    }}
-                                >
+                                key={product._id}
+                                className="max-w-[600px] h-28 bg-gray-100 mb-3 flex items-center gap-3"
+                                onClick={() => {
+                                    navigate(`/product/${product.id}`, {
+                                        state: { product: product },
+                                    });
+                                    setShowSearchBar(true);
+                                    setSearchQuery("");
+                                }}
+                            >
+                            
                                     <img className="w-24" src={product.image} alt="productImg" />
                                     <div className="flex flex-col gap-1">
-                                        <p className="font-semibold text-lg">{product.title}</p>
+                                        <p className="font-semibold text-lg">{product.nameProduct}</p>
                                         <p className="text-xs">
                                             {product.description.length > 100
                                                 ? `${product.description.slice(0, 100)}...`

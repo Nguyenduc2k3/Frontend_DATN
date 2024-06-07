@@ -103,43 +103,36 @@
 //     );
 // }
 
-
 import Banner from "../components/Banner";
 import Products from "../components/Products";
-// Uncomment when you have the API function available
-// import FeaturedProducts from "../components/FeaturedProducts";
 import Newsletter from "./Newsletter";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import axios from 'axios';
 
 export default function Home() {
     const [filteredProducts, setFilteredProducts] = useState([]);
-    const selectedSexCategory = useSelector((state) => state.next.sexCategory);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/products');
+                const response = await axios.get('http://127.0.0.1:8000/api/product');
                 const products = response.data;
-                if (selectedSexCategory) {
-                    setFilteredProducts(products.filter((item) => item.category === selectedSexCategory.toLowerCase()));
-                }
+                
+                // Cập nhật filteredProducts bằng dữ liệu từ API
+                setFilteredProducts(products);
             } catch (error) {
                 console.error("Failed to fetch products", error);
             }
         };
 
         fetchData();
-    }, [selectedSexCategory]);
+    }, []);
 
     return (
         <div>
             <Banner />
             <Products products={filteredProducts} />
-            {/* <FeaturedProducts products={filteredProducts} /> */}
             <Newsletter />
         </div>
     );
 }
-

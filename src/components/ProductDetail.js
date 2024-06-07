@@ -60,7 +60,7 @@ const Product = () => {
                 </div>
                 <div className="w-3/5 flex flex-col justify-center gap-12">
                     <div>
-                        <h2 className="text-4xl font-semibold">{details.title}</h2>
+                        <h2 className="text-4xl font-semibold">{details.nameProduct}</h2>
                         <div className="flex items-center gap-4 mt-3">
                             <p className="line-through text-gray-500">${details.oldPrice}</p>
                             <p className="font-semibold">${details.price}</p>
@@ -90,16 +90,16 @@ const Product = () => {
                         </div>
                         <button onClick={() => dispatch(addToCart({
                             _id: details._id,
-                            title: details.title,
+                            nameProduct: details.nameProduct,
                             image: details.image,
                             price: details.price,
                             quantity: baseQuantity,
                             description: details.description,
-                        })) & toast.success(`${details.title} is added to the cart.`)
+                        })) & toast.success(`${details.nameProduct} is added to the cart.`)
                         }
                             className="bg-black text-white py-3 px-6 active:bg-gray-800">Add to cart</button>
                     </div>
-                    <p className="text-base text-gray-500">Category: <span className="font-medium capitalize">{details.category}</span></p>
+                    <p className="text-base text-gray-500">Category: <span className="font-medium capitalize">{details.categoryID}</span></p>
                 </div>
             </div>
             <ToastContainer
