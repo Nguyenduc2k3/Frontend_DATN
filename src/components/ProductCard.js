@@ -11,7 +11,7 @@ const ProductCard = ({ product, view }) => {
     const navigate = useNavigate();
 
     const handleDetails = () => {
-        const productId = product._id;
+        const productId = product.id;
         navigate(`/product/${productId}`, { state: { product } });
     };
 
@@ -19,7 +19,7 @@ const ProductCard = ({ product, view }) => {
         dispatch(addToCart({
             _id: product.id,
             nameProduct: product.nameProduct,
-            image: product.image,
+            image: product.url,
             price: product.price,
             quantity: 1,
             description: product.description,

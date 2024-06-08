@@ -115,7 +115,7 @@ export default function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/product');
+                const response = await axios.get('http://127.0.0.1:8000/api/products');
                 const products = response.data;
                 
                 // Cập nhật filteredProducts bằng dữ liệu từ API

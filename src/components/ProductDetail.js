@@ -89,7 +89,7 @@ const Product = () => {
                             </div>
                         </div>
                         <button onClick={() => dispatch(addToCart({
-                            _id: details._id,
+                            _id: details.id,
                             nameProduct: details.nameProduct,
                             image: details.image,
                             price: details.price,
