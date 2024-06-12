@@ -64,7 +64,7 @@ const AppRouter = () => {
 
     const generateSubmenuRoutes = () => {
         return submenuOptions.map((submenuOption) => ({
-            path: `/${selectedSexCategory.toLowerCase()}/${submenuOption}`,
+            path: `/${selectedSexCategory}/${submenuOption}`,
             // element: <Clothing category={submenuOption} />,
         }));
     };
@@ -74,7 +74,7 @@ const AppRouter = () => {
         return links.flatMap((link) => {
             if (link.submenu) {
                 return link.sublinks.map((sublink) => ({
-                    path: `/${selectedSexCategory.toLowerCase()}${link.dir}/${sublink.name.toLowerCase()}`,
+                    path: `/${selectedSexCategory}${link.dir}/${sublink.name.toLowerCase()}`,
                     // element: <ShopCategory />,
                 }))
             } else {
