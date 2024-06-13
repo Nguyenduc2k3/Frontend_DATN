@@ -17,14 +17,14 @@ const ProductCard = ({ product, view }) => {
 
     const handleAddToCart = () => {
         dispatch(addToCart({
-            _id: product.id,
-            nameProduct: product.nameProduct,
+            _id: product.product_id,
+            nameProduct: product.name_product,
             image: product.url,
             price: product.price,
             quantity: 1,
             description: product.description,
         }));
-        toast.success(`${product.nameProduct} is added to the cart`);
+        toast.success(`${product.name_product} is added to the cart`);
     };
 
     return (
@@ -55,7 +55,7 @@ const ProductCard = ({ product, view }) => {
                 <div className={`${view === 'list' ? 'w-1/3 bottom-2 absolute' : ''}`}>
                     <p className={`${view === 'list' ? 'text-base font-bold uppercase' : ''}`}>{product.name}</p>
                 </div>
-                {product.isNew && (
+                {product.is_hot && (
                     <div className={`${view === 'list' ? 'absolute top-4 left-0' : 'absolute top-4 right-0'}`}>
                         <p className='bg-red-600 text-white font-semibold uppercase px-4 py-1'>Sale</p>
                     </div>

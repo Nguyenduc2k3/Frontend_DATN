@@ -51,7 +51,7 @@ const Product = () => {
                 <div className="w-2/5 relative">
                     <img className="w-full h-[550px] object-cover" src={details?.url} alt="productImg" />
                     <div className="absolute top-4 right-0">
-                        {details.isNew && (
+                        {details.is_hot && (
                             <p className="bg-black text-white font-semibold px-8 py-1">
                                 Sale
                             </p>
@@ -60,7 +60,7 @@ const Product = () => {
                 </div>
                 <div className="w-3/5 flex flex-col justify-center gap-12">
                     <div>
-                        <h2 className="text-4xl font-semibold">{details.nameProduct}</h2>
+                        <h2 className="text-4xl font-semibold">{details.name_product}</h2>
                         <div className="flex items-center gap-4 mt-3">
                             <p className="line-through text-gray-500">${details.price}</p>
                             <p className="font-semibold">${details.price_sale}</p>
@@ -89,13 +89,13 @@ const Product = () => {
                             </div>
                         </div>
                         <button onClick={() => dispatch(addToCart({
-                            _id: details.id,
-                            nameProduct: details.nameProduct,
-                            image: details.image,
-                            price: details.price,
+                            _id: details.product_id,
+                            nameProduct: details.name_product,
+                            image: details.url,
+                            price: details.price_sale,
                             quantity: baseQuantity,
                             description: details.description,
-                        })) & toast.success(`${details.nameProduct} is added to the cart.`)
+                        })) & toast.success(`${details.name_product} is added to the cart.`)
                         }
                             className="bg-black text-white py-3 px-6 active:bg-gray-800">Add to cart</button>
                     </div>
