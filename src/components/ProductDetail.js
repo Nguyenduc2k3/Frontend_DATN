@@ -49,7 +49,7 @@ const Product = () => {
             </div>
             <div className="max-w-screen-xl mx-auto my-10 flex gap-10">
                 <div className="w-2/5 relative">
-                    <img className="w-full h-[550px] object-cover" src={details?.image} alt="productImg" />
+                    <img className="w-full h-[550px] object-cover" src={details?.url} alt="productImg" />
                     <div className="absolute top-4 right-0">
                         {details.isNew && (
                             <p className="bg-black text-white font-semibold px-8 py-1">
@@ -62,8 +62,8 @@ const Product = () => {
                     <div>
                         <h2 className="text-4xl font-semibold">{details.nameProduct}</h2>
                         <div className="flex items-center gap-4 mt-3">
-                            <p className="line-through text-gray-500">${details.oldPrice}</p>
-                            <p className="font-semibold">${details.price}</p>
+                            <p className="line-through text-gray-500">${details.price}</p>
+                            <p className="font-semibold">${details.price_sale}</p>
                         </div>
                     </div>
                     <div className="flex items-center gap-1 text-base">
@@ -99,7 +99,7 @@ const Product = () => {
                         }
                             className="bg-black text-white py-3 px-6 active:bg-gray-800">Add to cart</button>
                     </div>
-                    <p className="text-base text-gray-500">Category: <span className="font-medium capitalize">{details.categoryID}</span></p>
+                    <p className="text-base text-gray-500">Category: <span className="font-medium capitalize">{details.name}</span></p>
                 </div>
             </div>
             <ToastContainer
