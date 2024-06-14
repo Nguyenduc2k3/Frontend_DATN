@@ -60,7 +60,7 @@ export default function Header({ products }) {
 
     useEffect(() => {
         const filtered = allProducts.filter((product) =>
-            product.nameProduct.toLowerCase().includes(searchQuery.toLowerCase())
+            product.name_product.toLowerCase().includes(searchQuery.toLowerCase())
         );
         setFilteredProducts(filtered);
     }, [searchQuery]);
@@ -97,9 +97,9 @@ export default function Header({ products }) {
                                 }}
                             >
                             
-                                    <img className="w-24" src={product.image} alt="productImg" />
+                                    <img className="w-24" src={product.thumbnail} alt="productImg" />
                                     <div className="flex flex-col gap-1">
-                                        <p className="font-semibold text-lg">{product.nameProduct}</p>
+                                        <p className="font-semibold text-lg">{product.name_product}</p>
                                         <p className="text-xs">
                                             {product.description.length > 100
                                                 ? `${product.description.slice(0, 100)}...`

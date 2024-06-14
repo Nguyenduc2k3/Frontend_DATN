@@ -17,10 +17,9 @@ const ProductCard = ({ product, view }) => {
 
     const handleAddToCart = () => {
         dispatch(addToCart({
-            _id: product.product_id,
+            _id: product.id,
             nameProduct: product.name_product,
-            image: product.url,
-            price: product.price,
+            image: product.thumbnail,
             quantity: 1,
             description: product.description,
         }));
@@ -30,13 +29,13 @@ const ProductCard = ({ product, view }) => {
     return (
         <div className={`${view === 'list' ? 'flex group relative h-96' : 'group relative'}`}>
             <div onClick={handleDetails} className={`${view === "list" ? 'w-1/3 h-96 cursor-pointer overflow-hidden' : 'w-full h-96 cursor-pointer overflow-hidden'}`}>
-                <img className={`${view === "list" ? 'w-full h-full object-cover group-hover:scale-110 duration-300' : 'w-full h-full object-cover group-hover:scale-110 duration-300'}`} src={product.url} alt="productImage" />
+                <img className={`${view === "list" ? 'w-full h-full object-cover group-hover:scale-110 duration-300' : 'w-full h-full object-cover group-hover:scale-110 duration-300'}`} src={product.thumbnail} alt="productImage" />
             </div>
             <div className="w-full border-[1px] px-2 py-4">
                 <div className="flex ml-[70px] ">
-                    <img alt="name" src={product.url} class="h-10 w-10 rounded-full object-contain" />
-                    <img alt="name" src={product.url} class="h-10 w-10 rounded-full object-contain" />
-                    <img alt="name" src={product.url} class="h-10 w-10 rounded-full object-contain" />
+                    <img alt="name" src={product.thumbnail} class="h-10 w-10 rounded-full object-contain" />
+                    <img alt="name" src={product.thumbnail} class="h-10 w-10 rounded-full object-contain" />
+                    <img alt="name" src={product.thumbnail} class="h-10 w-10 rounded-full object-contain" />
                 </div>
                 <div className={`${view === 'list' ? 'flex-col' : 'flex justify-between items-center'}`}>
                     <div className='w-full justify-center items-center'>

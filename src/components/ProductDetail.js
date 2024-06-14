@@ -49,7 +49,7 @@ const Product = () => {
             </div>
             <div className="max-w-screen-xl mx-auto my-10 flex gap-10">
                 <div className="w-2/5 relative">
-                    <img className="w-full h-[550px] object-cover" src={details?.url} alt="productImg" />
+                    <img className="w-full h-[550px] object-cover" src={details?.thumbnail} alt="productImg" />
                     <div className="absolute top-4 right-0">
                         {details.is_hot && (
                             <p className="bg-black text-white font-semibold px-8 py-1">
@@ -89,9 +89,9 @@ const Product = () => {
                             </div>
                         </div>
                         <button onClick={() => dispatch(addToCart({
-                            _id: details.product_id,
+                            _id: details.id,
                             nameProduct: details.name_product,
-                            image: details.url,
+                            image: details.thumbnail,
                             price: details.price_sale,
                             quantity: baseQuantity,
                             description: details.description,
